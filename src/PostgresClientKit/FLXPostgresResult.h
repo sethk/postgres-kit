@@ -1,6 +1,8 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol FLXPostgresTypeProtocol;
+
 @interface FLXPostgresResult : NSObject {
 	void* m_theResult;
 	NSString* m_theAffectedRows;
@@ -8,7 +10,7 @@
 	NSUInteger m_theNumberOfColumns;
 	NSUInteger m_theRow;
 	FLXPostgresConnection* m_theConnection;
-	void** m_theTypeHandlers;
+	id<FLXPostgresTypeProtocol>* m_theTypeHandlers;
 }
 
 @property (readonly) NSUInteger numberOfColumns;

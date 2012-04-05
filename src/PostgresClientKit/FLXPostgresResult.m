@@ -20,7 +20,7 @@
 		m_theAffectedRows = [[NSString stringWithUTF8String:PQcmdTuples([self result])] retain];
 		m_theRow = 0;
 		m_theConnection = [theConnection retain];
-		m_theTypeHandlers = (void** )calloc(sizeof(void* ),m_theNumberOfColumns);
+		m_theTypeHandlers = (id<FLXPostgresTypeProtocol>* )calloc(sizeof(void* ),m_theNumberOfColumns);
 		NSParameterAssert(m_theTypeHandlers);
 	}
 	return self;
@@ -75,7 +75,7 @@
 
 -(id<FLXPostgresTypeProtocol>)typeHandlerForColumn:(NSUInteger)theColumn {
 	NSParameterAssert(theColumn < m_theNumberOfColumns);
-	void* theHandler = m_theTypeHandlers[theColumn];
+	id<FLXPostgresTypeProtocol> theHandler = m_theTypeHandlers[theColumn];
 	if(theHandler == nil) {
 		FLXPostgresOid theType = PQftype([self result],theColumn);
 		theHandler = m_theTypeHandlers[theColumn] = [m_theConnection _typeHandlerForRemoteType:theType];
