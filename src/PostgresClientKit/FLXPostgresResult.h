@@ -1,6 +1,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class FLXPostgresConnection;
 @protocol FLXPostgresTypeProtocol;
 
 @interface FLXPostgresResult : NSObject {

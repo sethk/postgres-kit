@@ -1,6 +1,7 @@
 
-#import "PostgresClientKit.h"
+#import "FLXPostgresConnection.h"
 #import "PostgresClientKitPrivate.h"
+#import "FLXPostgresException.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -1,5 +1,8 @@
 
 #include <libpq-fe.h>
+#import "FLXPostgresConnection.h"
+#import "FLXPostgresResult.h"
+#import "FLXPostgresStatement.h"
 
 typedef Oid FLXPostgresOid;
 

@@ -1,6 +1,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class FLXPostgresStatement, FLXPostgresResult;
+
 @interface FLXPostgresConnection : NSObject {
 	void* m_theConnection;
 	NSString* m_theHost;

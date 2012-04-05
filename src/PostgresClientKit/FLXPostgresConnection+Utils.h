@@ -1,4 +1,6 @@
 
+#import "FLXPostgresConnection.h"
+
 @interface FLXPostgresConnection (Utils)
 
 -(NSArray* )databases;
