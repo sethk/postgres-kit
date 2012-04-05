@@ -10,7 +10,7 @@
 	NSParameterAssert(theResult && [theResult affectedRows]);	
 	NSMutableArray* theDatabases = [NSMutableArray arrayWithCapacity:[theResult affectedRows]];
 	NSArray* theRow = nil;
-	while(theRow = [theResult fetchRowAsArray]) {
+	while((theRow = [theResult fetchRowAsArray])) {
 		NSParameterAssert([theRow count]==1);
 		NSParameterAssert([[theRow objectAtIndex:0] isKindOfClass:[NSString class]]);
 		[theDatabases addObject:[theRow objectAtIndex:0]];
@@ -25,7 +25,7 @@
 	NSParameterAssert(theResult && [theResult affectedRows]);	
 	NSMutableArray* theSchemas = [NSMutableArray arrayWithCapacity:[theResult affectedRows]];
 	NSArray* theRow = nil;
-	while(theRow = [theResult fetchRowAsArray]) {
+	while((theRow = [theResult fetchRowAsArray])) {
 		NSParameterAssert([theRow count]==1);
 		NSParameterAssert([[theRow objectAtIndex:0] isKindOfClass:[NSString class]]);
 		[theSchemas addObject:[theRow objectAtIndex:0]];
@@ -42,7 +42,7 @@
 	NSParameterAssert(theResult);
 	NSMutableArray* theTables = [NSMutableArray arrayWithCapacity:[theResult affectedRows]];
 	NSArray* theRow = nil;
-	while(theRow = [theResult fetchRowAsArray]) {
+	while((theRow = [theResult fetchRowAsArray])) {
 		NSParameterAssert([theRow count]==1);
 		NSParameterAssert([[theRow objectAtIndex:0] isKindOfClass:[NSString class]]);
 		[theTables addObject:[theRow objectAtIndex:0]];
@@ -80,7 +80,7 @@
 	NSParameterAssert(theResult);
 	NSMutableArray* theColumns = [NSMutableArray arrayWithCapacity:[theResult affectedRows]];
 	NSArray* theRow = nil;
-	while(theRow = [theResult fetchRowAsArray]) {
+	while((theRow = [theResult fetchRowAsArray])) {
 		NSParameterAssert([theRow count]==1);
 		NSParameterAssert([[theRow objectAtIndex:0] isKindOfClass:[NSString class]]);
 		[theColumns addObject:[theRow objectAtIndex:0]];
