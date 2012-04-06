@@ -22,15 +22,15 @@
 			name = "Build Everything Useful!";
 			productName = "Build Everything!";
 		};
-		6EF6335810B9773800288BBB /* Build PostgreSQL 8.4 (64-bit only) */ = {
+		6EF6335810B9773800288BBB /* Build PostgreSQL 9.1.3 (64-bit only) */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 6EF6335B10B9778000288BBB /* Build configuration list for PBXAggregateTarget "Build PostgreSQL 8.4 (64-bit only)" */;
+			buildConfigurationList = 6EF6335B10B9778000288BBB /* Build configuration list for PBXAggregateTarget "Build PostgreSQL 9.1.3 (64-bit only)" */;
 			buildPhases = (
 				6EF6335710B9773800288BBB /* ShellScript */,
 			);
 			dependencies = (
 			);
-			name = "Build PostgreSQL 8.4 (64-bit only)";
+			name = "Build PostgreSQL 9.1.3 (64-bit only)";
 			productName = "Build PostgresSQL 8.4";
 		};
 /* End PBXAggregateTarget section */
@@ -543,7 +543,6 @@
 		6EF3E6410F6D3335001AFA38 /* clear.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = clear.tiff; sourceTree = "<group>"; };
 		6EF4D0D810CFAD25002D7FDF /* IdentityUserArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentityUserArrayController.h; sourceTree = "<group>"; };
 		6EF4D0D910CFAD25002D7FDF /* IdentityUserArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentityUserArrayController.m; sourceTree = "<group>"; };
-		6EF6335210B9771000288BBB /* postgresql-8.4.1.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "postgresql-8.4.1.tar.gz"; sourceTree = "<group>"; };
 		6EF633AF10B982B300288BBB /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -717,7 +716,6 @@
 		6E23CBD40DCDD00F0041AA57 /* tar */ = {
 			isa = PBXGroup;
 			children = (
-				6EF6335210B9771000288BBB /* postgresql-8.4.1.tar.gz */,
 			);
 			path = tar;
 			sourceTree = "<group>";
@@ -1378,7 +1376,7 @@
 			projectRoot = "";
 			targets = (
 				6E620F3D0F4366C100BE396D /* Build Everything Useful! */,
-				6EF6335810B9773800288BBB /* Build PostgreSQL 8.4 (64-bit only) */,
+				6EF6335810B9773800288BBB /* Build PostgreSQL 9.1.3 (64-bit only) */,
 				6E23CD7E0DCDE3C80041AA57 /* PostgresClientKit */,
 				6E23CBED0DCDD29F0041AA57 /* PostgresServerKit */,
 				6E26AAFD0F7FC518009F6162 /* PostgresDataKit */,
@@ -1536,7 +1534,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -ex";
-			shellScript = "VERSION=postgresql-8.4.1\nTAR=${SOURCE_ROOT}/tar/${VERSION}.tar.gz\nUNARCHIVE=${DERIVED_SOURCES_DIR}\nBUILD=${BUILT_PRODUCTS_DIR}\nif [ \"${ARCHS}\" = \"${ARCHS_STANDARD_32_64_BIT}\" ]\nthen\n    echo \"Can't compile universal version\"\n    exit 64 # EX_USAGE\nfi\n\nPREFIX=${BUILD}/${VERSION}-${ARCHS}\n\nif [ -e ${PREFIX} ]\nthen\n  echo \"Assuming already exists: ${PREFIX}\"\n  exit 0\nfi\n\n\necho \"Unarchiving sources to ${UNARCHIVE}\"\necho \"Built postgres with be installed at ${PREFIX}\"\n\n# remove existing build directory, unarchive\nrm -fr \"${UNARCHIVE}\"\nmkdir \"${UNARCHIVE}\"\ncd \"${UNARCHIVE}\"\ntar -zxf \"${TAR}\"\ncd \"${VERSION}\"\n\n# configure - for 10.6\nexport CFLAGS=\"-isysroot ${SDKROOT} -arch ${ARCHS}\"\nexport LDFLAGS=\"-arch ${ARCHS}\"\n./configure --prefix=\"${PREFIX}\" --enable-thread-safety --without-docdir --without-readline --with-bonjour --with-openssl --with-libxml --with-libxslt --disable-rpath --disable-dependency-tracking\n\n# make and install\nmake\nmake install\n\n# make symbolic link\nrm -f ${BUILD}/postgresql-current\nln -s ${PREFIX} ${BUILD}/postgresql-current\n\nexit 0\n";
+			shellScript = "VERSION=postgresql-9.1.3\nTAR=${SOURCE_ROOT}/tar/${VERSION}.tar.bz2\nUNARCHIVE=${DERIVED_SOURCES_DIR}\nBUILD=${BUILT_PRODUCTS_DIR}\nif [ \"${ARCHS}\" = \"${ARCHS_STANDARD_32_64_BIT}\" ]\nthen\n    echo \"Can't compile universal version\"\n    exit 64 # EX_USAGE\nfi\n\nPREFIX=${BUILD}/${VERSION}-${ARCHS}\n\nif [ -e ${PREFIX} ]\nthen\n  echo \"Assuming already exists: ${PREFIX}\"\n  exit 0\nfi\n\n\necho \"Unarchiving sources to ${UNARCHIVE}\"\necho \"Built postgres with be installed at ${PREFIX}\"\n\n# remove existing build directory, unarchive\nrm -fr \"${UNARCHIVE}\"\nmkdir \"${UNARCHIVE}\"\ncd \"${UNARCHIVE}\"\ntar jxf \"${TAR}\"\ncd \"${VERSION}\"\n\n# configure - for 10.6\nexport CFLAGS=\"-isysroot ${SDKROOT} -arch ${ARCHS}\"\nexport LDFLAGS=\"-arch ${ARCHS}\"\n./configure --prefix=\"${PREFIX}\" --enable-thread-safety --without-docdir --without-readline --with-bonjour --with-openssl --with-libxml --with-libxslt --disable-rpath --disable-dependency-tracking\n\n# make and install\nmake\nmake install\n\n# make symbolic link\nrm -f ${BUILD}/postgresql-current\nln -s ${PREFIX} ${BUILD}/postgresql-current\n\nexit 0\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1764,12 +1762,12 @@
 		};
 		6EF6336E10B97E6D00288BBB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6EF6335810B9773800288BBB /* Build PostgreSQL 8.4 (64-bit only) */;
+			target = 6EF6335810B9773800288BBB /* Build PostgreSQL 9.1.3 (64-bit only) */;
 			targetProxy = 6EF6336D10B97E6D00288BBB /* PBXContainerItemProxy */;
 		};
 		6EF6339610B981D600288BBB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6EF6335810B9773800288BBB /* Build PostgreSQL 8.4 (64-bit only) */;
+			target = 6EF6335810B9773800288BBB /* Build PostgreSQL 9.1.3 (64-bit only) */;
 			targetProxy = 6EF6339510B981D600288BBB /* PBXContainerItemProxy */;
 		};
 		6EF633F910B9835E00288BBB /* PBXTargetDependency */ = {
@@ -2396,7 +2394,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = "Build PostgresSQL 8.4";
+				PRODUCT_NAME = "PostgreSQL 9.1.3";
 			};
 			name = Debug;
 		};
@@ -2405,7 +2403,7 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				PRODUCT_NAME = "Build PostgresSQL 8.4";
+				PRODUCT_NAME = "PostgreSQL 9.1.3";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -2539,7 +2537,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6EF6335B10B9778000288BBB /* Build configuration list for PBXAggregateTarget "Build PostgreSQL 8.4 (64-bit only)" */ = {
+		6EF6335B10B9778000288BBB /* Build configuration list for PBXAggregateTarget "Build PostgreSQL 9.1.3 (64-bit only)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6EF6335910B9773800288BBB /* Debug */,
