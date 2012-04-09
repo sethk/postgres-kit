@@ -11,7 +11,7 @@
 	NSUInteger m_theNumberOfColumns;
 	NSUInteger m_theRow;
 	FLXPostgresConnection* m_theConnection;
-	id<FLXPostgresTypeProtocol>* m_theTypeHandlers;
+	__unsafe_unretained id<FLXPostgresTypeProtocol>* m_theTypeHandlers;
 }
 
 @property (readonly) NSUInteger numberOfColumns;
