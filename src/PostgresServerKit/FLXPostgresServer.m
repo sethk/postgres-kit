@@ -190,9 +190,10 @@ const NSUInteger FLXDefaultPostgresPort = DEF_PGPORT;
 		return NO;
 	}
 	// create the data path if nesessary
-	if([self _createPath:[self dataPath]]==NO) {
+	NSError *error;
+	if([self _createPath:[self dataPath] error:&error]==NO) {
 		[self setState:FLXServerStateStartingError];
-		[self _delegateServerMessage:[NSString stringWithFormat:@"Unable to create data directory: %@",[self dataPath]]];
+		[self _delegateServerMessage:[NSString stringWithFormat:@"Unable to create data directory: %@: %@",[self dataPath],[error localizedDescription]]];
 		return NO;    
 	}
 	
@@ -304,9 +305,10 @@ const NSUInteger FLXDefaultPostgresPort = DEF_PGPORT;
 		return NO;
 	}
 	// create the backup path if nesessary
-	if([self _createPath:thePath]==NO) {
+	NSError *error;
+	if([self _createPath:thePath error:&error]==NO) {
 		[self setBackupState:FLXBackupStateError];
-		[self _delegateServerMessage:[NSString stringWithFormat:@"Unable to create backup directory: %@",thePath]];
+		[self _delegateServerMessage:[NSString stringWithFormat:@"Unable to create backup directory: %@: %@",thePath,[error localizedDescription]]];
 		return NO;    
 	}
 	
@@ -540,15 +542,18 @@ const NSUInteger FLXDefaultPostgresPort = DEF_PGPORT;
 	return [thePid intValue];
 }
 	
--(BOOL)_createPath:(NSString* )thePath {
+-(BOOL)_createPath:(NSString* )thePath error:(NSError **)pError {
 	// if directory already exists
 	BOOL isDirectory = NO;
 	if([[NSFileManager defaultManager] fileExistsAtPath:thePath isDirectory:&isDirectory]==NO) {
 		// create the directory
-		if([[NSFileManager defaultManager] createDirectoryAtPath:thePath withIntermediateDirectories:YES attributes:nil error:nil]==NO) {
+		if([[NSFileManager defaultManager] createDirectoryAtPath:thePath withIntermediateDirectories:YES attributes:nil error:pError]==NO) {
 			return NO;
 		}
 	} else if(isDirectory==NO) {
+		if (pError)
+			*pError = [NSError errorWithDomain:NSCocoaErrorDomain code:-1 userInfo:[NSDictionary dictionaryWithObject:@"Path already exists as regular file"
+																											   forKey:NSLocalizedDescriptionKey]];
 		return NO;
 	}  
 	

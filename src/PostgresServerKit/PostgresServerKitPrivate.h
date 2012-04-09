@@ -1,6 +1,6 @@
 
 @interface FLXPostgresServer (Private)
--(BOOL)_createPath:(NSString* )thePath;
+-(BOOL)_createPath:(NSString* )thePath error:(NSError **)pError;
 -(NSString* )_backupFilePathForFolder:(NSString* )thePath;
 -(int)_processIdentifierFromDataPath;
 -(void)_delegateServerMessage:(NSString* )theMessage;
