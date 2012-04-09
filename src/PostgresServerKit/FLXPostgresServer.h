@@ -10,7 +10,7 @@
   id m_theDelegate;
 }
 
-@property (readonly) NSString* dataPath;
+@property (retain,readonly) NSString* dataPath;
 @property (retain) NSString* hostname;
 @property (readonly) NSString* serverVersion;
 @property (assign) NSUInteger port;

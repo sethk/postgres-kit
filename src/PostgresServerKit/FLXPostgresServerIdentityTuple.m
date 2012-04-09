@@ -36,7 +36,7 @@
 				// we reached the end of the scanning
 				isAtEnd = YES;
 				if([currentColumn length]) {
-					[theTokens addObject:[currentColumn copy]];
+					[theTokens addObject:[[currentColumn copy] autorelease]];
 				}							
 			}
 			continue;
@@ -49,7 +49,7 @@
 				// we reached the end of the scanning
 				isAtEnd = YES;
 				if([currentColumn length]) {
-					[theTokens addObject:[currentColumn copy]];
+					[theTokens addObject:[[currentColumn copy] autorelease]];
 				}			
 			}
 			continue;
@@ -71,7 +71,7 @@
 				[currentColumn appendString:tempString]; 
 			} else {
 				// eject token
-				[theTokens addObject:[currentColumn copy]];
+				[theTokens addObject:[[currentColumn copy] autorelease]];
 				[currentColumn setString:@""];
 			}
 		}

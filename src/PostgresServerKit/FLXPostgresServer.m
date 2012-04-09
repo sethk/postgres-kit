@@ -51,7 +51,7 @@ const NSUInteger FLXDefaultPostgresPort = DEF_PGPORT;
 	return NSUIntegerMax;  // denotes an object that cannot be released
 }
 
--(void)release {
+-(oneway void)release {
 	// do nothing
 }
 
@@ -171,7 +171,7 @@ const NSUInteger FLXDefaultPostgresPort = DEF_PGPORT;
 	}
 	
 	// set the data path and the pid  
-	m_theDataPath = thePath;
+	m_theDataPath = [thePath copy];
 	m_theProcessIdentifier = -1;
 	
 	// if database process is already running, then set this as the state

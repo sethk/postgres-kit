@@ -201,7 +201,7 @@
 		return NO;		
 	}
 	
-	NSLog(@"Set permissions for %@ as user %@ and %o",thePath,theOwnerAccountName,[thePosixPermissions integerValue]);
+	NSLog(@"Set permissions for %@ as user %@ and %lo",thePath,theOwnerAccountName,[thePosixPermissions integerValue]);
 	
 	// success (we think!)
 	return YES;	

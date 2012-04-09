@@ -129,6 +129,7 @@
 		return nil;
 	}
 	NSString* thePassword = [[NSString alloc] initWithBytes:thePasswordData length:thePasswordLength encoding:NSUTF8StringEncoding];
+	SecKeychainItemFreeContent(NULL, thePasswordData);
 	CFRelease(theItem);	
 	return [thePassword autorelease];	
 }

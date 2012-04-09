@@ -67,8 +67,8 @@
 @property (assign) BOOL bindInstallButtonEnabled;
 @property (assign) BOOL bindUninstallButtonEnabled;
 
-@property (retain) NSString* bindNewPassword;
-@property (retain) NSString* bindNewPassword2;
+@property (copy) NSString* bindNewPassword;
+@property (copy) NSString* bindNewPassword2;
 @property (retain) NSString* bindExistingPassword;
 @property (assign) BOOL bindPasswordButtonEnabled;
 @property (retain) NSString* bindPasswordMessage;
@@ -81,6 +81,6 @@
 -(NSInteger)backupFreeSpacePercentFromTag;
 
 -(NSString* )existingPassword;
--(NSString* )newPassword;
+-(__autoreleasing NSString* )newPassword NS_RETURNS_NOT_RETAINED;
 
 @end

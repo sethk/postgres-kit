@@ -28,7 +28,7 @@
 	NSArray* theLines = [theContents componentsSeparatedByString:@"\n"];
 
 	// parse lines into tuples	
-	NSMutableArray* theTuples = [[NSMutableArray alloc] initWithCapacity:[theLines count]];
+	NSMutableArray* theTuples = [[[NSMutableArray alloc] initWithCapacity:[theLines count]] autorelease];
 	NSString* theComment = nil;
 	NSUInteger theLineNumber = 0;
 	BOOL isSuperAdminAccessTuple = NO;
@@ -43,7 +43,7 @@
 			theComment = [[theLine2 stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:@""] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 			continue;
 		}
-		FLXPostgresServerAccessTuple* theTuple = [[FLXPostgresServerAccessTuple alloc] initWithLine:theLine2];
+		FLXPostgresServerAccessTuple* theTuple = [[[FLXPostgresServerAccessTuple alloc] initWithLine:theLine2] autorelease];
 		if(theTuple==nil) {
 			// error parsing line
 			[self _delegateServerMessage:[NSString stringWithFormat:@"Parse error: %@: line %u",thePath,theLineNumber]];
@@ -110,7 +110,7 @@
 	NSArray* theLines = [theContents componentsSeparatedByString:@"\n"];
 	
 	// parse lines into tuples	
-	NSMutableArray* theTuples = [[NSMutableArray alloc] initWithCapacity:[theLines count]];
+	NSMutableArray* theTuples = [[[NSMutableArray alloc] initWithCapacity:[theLines count]] autorelease];
 	NSUInteger theLineNumber = 0;
 	for(NSString* theLine in theLines) {
 		theLineNumber++;
@@ -121,7 +121,7 @@
 		if([theLine2 hasPrefix:@"#"]) {
 			continue;
 		}
-		FLXPostgresServerIdentityTuple* theTuple = [[FLXPostgresServerIdentityTuple alloc] initWithLine:theLine2];
+		FLXPostgresServerIdentityTuple* theTuple = [[[FLXPostgresServerIdentityTuple alloc] initWithLine:theLine2] autorelease];
 		if(theTuple==nil) {
 			// error parsing line
 			[self _delegateServerMessage:[NSString stringWithFormat:@"Parse error: %@: line %u",thePath,theLineNumber]];
