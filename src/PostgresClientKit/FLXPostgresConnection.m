@@ -72,7 +72,7 @@ NSString* FLXPostgresParameterProtocolVersion = @"protocol_version";
 	if([theURL host]) [theConnection setHost:[theURL host]];
 	if([theURL port]) [theConnection setPort:[[theURL port] unsignedIntegerValue]];
 	if([theURL path]) {
-		NSString* thePath = [[theURL path] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
+		NSString* thePath = [theURL lastPathComponent];
 		if([thePath length]) {
 			[theConnection setDatabase:thePath];
 		}
