@@ -348,7 +348,10 @@ NSString* FLXPostgresParameterProtocolVersion = @"protocol_version";
 	PGresult* theResult = nil;
 	if([theQuery isKindOfClass:[NSString class]]) {
 		NSString* theStatement = (NSString* )theQuery;
-		theResult = PQexecParams([self PGconn],[theStatement UTF8String],nParams,paramTypes,(const char** )paramValues,(const int* )paramLengths,(const int* )paramFormats,1);
+		if (nParams)
+			theResult = PQexecParams([self PGconn],[theStatement UTF8String],nParams,paramTypes,(const char** )paramValues,(const int* )paramLengths,(const int* )paramFormats,1);
+		else
+			theResult = PQexec([self PGconn],[theStatement UTF8String]);
 	} else if([theQuery isKindOfClass:[FLXPostgresStatement class]]) {
 		FLXPostgresStatement* theStatement = (FLXPostgresStatement* )theQuery;
 		if([theStatement name]==nil) {
