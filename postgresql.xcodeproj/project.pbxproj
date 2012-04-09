@@ -159,6 +159,9 @@
 		6EF4D0DA10CFAD25002D7FDF /* IdentityUserArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF4D0D910CFAD25002D7FDF /* IdentityUserArrayController.m */; };
 		6EF4D11E10CFB5B5002D7FDF /* backup.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 6E4B317D0F6BDEC8003504FB /* backup.tiff */; };
 		6EF633B010B982B300288BBB /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EF633AF10B982B300288BBB /* libcrypto.dylib */; };
+		FD5A13D015311CD800223FED /* FLXPostgresTypeNSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5A13CE152FBC7700223FED /* FLXPostgresTypeNSDate.m */; };
+		FD77B7DC152ED9130080F258 /* FLXPostgresTypeNSData.h in Headers */ = {isa = PBXBuildFile; fileRef = FD77B7DA152ED9120080F258 /* FLXPostgresTypeNSData.h */; };
+		FD77B7DD152ED9130080F258 /* FLXPostgresTypeNSData.m in Sources */ = {isa = PBXBuildFile; fileRef = FD77B7DB152ED9120080F258 /* FLXPostgresTypeNSData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -544,6 +547,10 @@
 		6EF4D0D810CFAD25002D7FDF /* IdentityUserArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentityUserArrayController.h; sourceTree = "<group>"; };
 		6EF4D0D910CFAD25002D7FDF /* IdentityUserArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentityUserArrayController.m; sourceTree = "<group>"; };
 		6EF633AF10B982B300288BBB /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
+		FD5A13CD152FBC7700223FED /* FLXPostgresTypeNSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXPostgresTypeNSDate.h; sourceTree = "<group>"; };
+		FD5A13CE152FBC7700223FED /* FLXPostgresTypeNSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLXPostgresTypeNSDate.m; sourceTree = "<group>"; };
+		FD77B7DA152ED9120080F258 /* FLXPostgresTypeNSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXPostgresTypeNSData.h; sourceTree = "<group>"; };
+		FD77B7DB152ED9120080F258 /* FLXPostgresTypeNSData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLXPostgresTypeNSData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -709,6 +716,10 @@
 				6E1EA3650FD13CC50039B9FF /* FLXPostgresTypeNSString.m */,
 				6ECF979E10B9CB5C0029AB09 /* FLXPostgresTypeNSNumber.h */,
 				6ECF979F10B9CB5C0029AB09 /* FLXPostgresTypeNSNumber.m */,
+				FD77B7DA152ED9120080F258 /* FLXPostgresTypeNSData.h */,
+				FD77B7DB152ED9120080F258 /* FLXPostgresTypeNSData.m */,
+				FD5A13CD152FBC7700223FED /* FLXPostgresTypeNSDate.h */,
+				FD5A13CE152FBC7700223FED /* FLXPostgresTypeNSDate.m */,
 			);
 			name = Types;
 			sourceTree = "<group>";
@@ -1108,6 +1119,7 @@
 				6E4FFD690F7F853900A11AAD /* FLXPostgresStatement.h in Headers */,
 				6E1EA3680FD13DB10039B9FF /* FLXPostgresTypeNSString.h in Headers */,
 				6ECF97A010B9CB5C0029AB09 /* FLXPostgresTypeNSNumber.h in Headers */,
+				FD77B7DC152ED9130080F258 /* FLXPostgresTypeNSData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1561,6 +1573,8 @@
 				6E4FFD6A0F7F853900A11AAD /* FLXPostgresStatement.m in Sources */,
 				6E1EA3670FD13CC50039B9FF /* FLXPostgresTypeNSString.m in Sources */,
 				6ECF97A110B9CB5C0029AB09 /* FLXPostgresTypeNSNumber.m in Sources */,
+				FD77B7DD152ED9130080F258 /* FLXPostgresTypeNSData.m in Sources */,
+				FD5A13D015311CD800223FED /* FLXPostgresTypeNSDate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
