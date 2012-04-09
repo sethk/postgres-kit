@@ -532,14 +532,24 @@ const NSUInteger FLXDefaultPostgresPort = DEF_PGPORT;
 	}
 	
 	// return the PID as a decimal number
-	NSDecimalNumber* thePid = [NSDecimalNumber decimalNumberWithString:thePidString];
-	if(thePid==nil) {
+	NSDecimalNumber* thePidNumber = [NSDecimalNumber decimalNumberWithString:thePidString];
+	if(thePidNumber==nil) {
 		// if postmaster.pid file does not contain a valid decimal number, return
 		return -1;    
 	}
+
+	// check whether the process is actually running
+	pid_t thePid = [thePidNumber intValue];
+	if(kill(thePid,0) == -1 && errno == ESRCH) {
+		NSLog(@"Deleting stale pid file %@",thePath);
+		NSError* error;
+		if(![[NSFileManager defaultManager] removeItemAtPath:thePath error:&error]) {
+			NSLog(@"Could not delete stale pid file at %@: %@",thePath,[error localizedDescription]);
+		}
+	}
 	
 	// success - return decimal number
-	return [thePid intValue];
+	return thePid;
 }
 	
 -(BOOL)_createPath:(NSString* )thePath error:(NSError **)pError {
