@@ -162,6 +162,9 @@
 		FD5A13D015311CD800223FED /* FLXPostgresTypeNSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5A13CE152FBC7700223FED /* FLXPostgresTypeNSDate.m */; };
 		FD77B7DC152ED9130080F258 /* FLXPostgresTypeNSData.h in Headers */ = {isa = PBXBuildFile; fileRef = FD77B7DA152ED9120080F258 /* FLXPostgresTypeNSData.h */; };
 		FD77B7DD152ED9130080F258 /* FLXPostgresTypeNSData.m in Sources */ = {isa = PBXBuildFile; fileRef = FD77B7DB152ED9120080F258 /* FLXPostgresTypeNSData.m */; };
+		FDC2E6761533E16000FD5AF1 /* FLXPostgresTypeNSArray.h in Headers */ = {isa = PBXBuildFile; fileRef = FDC2E6741533E16000FD5AF1 /* FLXPostgresTypeNSArray.h */; };
+		FDC2E6771533E16000FD5AF1 /* FLXPostgresTypeNSArray.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC2E6751533E16000FD5AF1 /* FLXPostgresTypeNSArray.m */; };
+		FDC2E6791533EF0A00FD5AF1 /* FLXPostgresArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E4FFCA80F7E9F5300A11AAD /* FLXPostgresArray.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -551,6 +554,8 @@
 		FD5A13CE152FBC7700223FED /* FLXPostgresTypeNSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLXPostgresTypeNSDate.m; sourceTree = "<group>"; };
 		FD77B7DA152ED9120080F258 /* FLXPostgresTypeNSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXPostgresTypeNSData.h; sourceTree = "<group>"; };
 		FD77B7DB152ED9120080F258 /* FLXPostgresTypeNSData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLXPostgresTypeNSData.m; sourceTree = "<group>"; };
+		FDC2E6741533E16000FD5AF1 /* FLXPostgresTypeNSArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXPostgresTypeNSArray.h; sourceTree = "<group>"; };
+		FDC2E6751533E16000FD5AF1 /* FLXPostgresTypeNSArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLXPostgresTypeNSArray.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -720,6 +725,8 @@
 				FD77B7DB152ED9120080F258 /* FLXPostgresTypeNSData.m */,
 				FD5A13CD152FBC7700223FED /* FLXPostgresTypeNSDate.h */,
 				FD5A13CE152FBC7700223FED /* FLXPostgresTypeNSDate.m */,
+				FDC2E6741533E16000FD5AF1 /* FLXPostgresTypeNSArray.h */,
+				FDC2E6751533E16000FD5AF1 /* FLXPostgresTypeNSArray.m */,
 			);
 			name = Types;
 			sourceTree = "<group>";
@@ -1120,6 +1127,7 @@
 				6E1EA3680FD13DB10039B9FF /* FLXPostgresTypeNSString.h in Headers */,
 				6ECF97A010B9CB5C0029AB09 /* FLXPostgresTypeNSNumber.h in Headers */,
 				FD77B7DC152ED9130080F258 /* FLXPostgresTypeNSData.h in Headers */,
+				FDC2E6761533E16000FD5AF1 /* FLXPostgresTypeNSArray.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1575,6 +1583,8 @@
 				6ECF97A110B9CB5C0029AB09 /* FLXPostgresTypeNSNumber.m in Sources */,
 				FD77B7DD152ED9130080F258 /* FLXPostgresTypeNSData.m in Sources */,
 				FD5A13D015311CD800223FED /* FLXPostgresTypeNSDate.m in Sources */,
+				FDC2E6771533E16000FD5AF1 /* FLXPostgresTypeNSArray.m in Sources */,
+				FDC2E6791533EF0A00FD5AF1 /* FLXPostgresArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

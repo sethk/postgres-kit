@@ -4,7 +4,7 @@
 // helper function for constructing arrays
 
 @interface FLXPostgresArray : NSObject {
-	FLXPostgresType type;
+	FLXPostgresOid type;
 	NSUInteger dimensions;
 	NSUInteger* size;
 	NSUInteger* lowerBound;
@@ -13,13 +13,13 @@
 }
 
 @property (retain) NSMutableArray* tuples;
-@property (assign) FLXPostgresType type;
+@property (assign) FLXPostgresOid type;
 @property (assign) NSUInteger dimensions;
 @property (assign) NSUInteger numberOfTuples;
 @property (assign) NSUInteger* size;
 @property (assign) NSUInteger* lowerBound;
 
-+(FLXPostgresArray* )arrayWithDimensions:(NSUInteger)theDimensions type:(FLXPostgresType)theType;
++(FLXPostgresArray* )arrayWithDimensions:(NSUInteger)theDimensions type:(FLXPostgresOid)theType;
 
 // methods
 -(void)setDimension:(NSUInteger)theDimension size:(NSUInteger)theSize lowerBound:(NSUInteger)theLowerBound;

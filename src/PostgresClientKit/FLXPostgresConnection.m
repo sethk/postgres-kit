@@ -2,6 +2,7 @@
 #import "FLXPostgresConnection.h"
 #import "PostgresClientKitPrivate.h"
 #import "FLXPostgresTypeNSDate.h"
+#import "FLXPostgresTypeNSArray.h"
 #import "FLXPostgresException.h"
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -300,14 +301,7 @@ NSString* FLXPostgresParameterProtocolVersion = @"protocol_version";
 		}
 		
 		// obtain correct handler for this class
-		Class theClass = [theNativeObject class];
-		id<FLXPostgresTypeProtocol> theTypeHandler = nil;
-		while (theClass) {
-			theTypeHandler = [self _typeHandlerForClass:theClass];
-			if (theTypeHandler)
-				break;
-			theClass = [theClass superclass];
-		}
+		id<FLXPostgresTypeProtocol> theTypeHandler = [self _typeHandlerForClass:[theNativeObject class]];
 		if(theTypeHandler==nil) {
 			free(paramValues);
 			free(paramTypes);
@@ -473,7 +467,13 @@ NSString* FLXPostgresParameterProtocolVersion = @"protocol_version";
 }
 
 -(id<FLXPostgresTypeProtocol>)_typeHandlerForClass:(Class)theClass {
-	return [m_theTypeMap objectForKey:NSStringFromClass(theClass)];
+	while (theClass) {
+		id<FLXPostgresTypeProtocol> theTypeHandler = [m_theTypeMap objectForKey:NSStringFromClass(theClass)];
+		if (theTypeHandler)
+			return theTypeHandler;
+		theClass = [theClass superclass];
+	}
+	return nil;
 }
 
 -(id<FLXPostgresTypeProtocol>)_typeHandlerForRemoteType:(FLXPostgresOid)theType {
@@ -485,6 +485,7 @@ NSString* FLXPostgresParameterProtocolVersion = @"protocol_version";
 	[self _registerTypeHandler:[FLXPostgresTypeNSNumber class]];	
 	[self _registerTypeHandler:[FLXPostgresTypeNSData class]];
 	[self _registerTypeHandler:[FLXPostgresTypeNSDate class]];
+	[self _registerTypeHandler:[FLXPostgresTypeNSArray class]];
 }
 
 @end

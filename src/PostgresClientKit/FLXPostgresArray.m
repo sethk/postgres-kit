@@ -1,6 +1,7 @@
 
 #import "PostgresClientKit.h"
 #import "PostgresClientKitPrivate.h"
+#import "FLXPostgresArray.h"
 
 @implementation FLXPostgresArray
 
@@ -15,7 +16,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
--(id)initWithDimensions:(NSUInteger)theDimensions type:(FLXPostgresType)theType {
+-(id)initWithDimensions:(NSUInteger)theDimensions type:(FLXPostgresOid)theType {
 	self = [super init];
 	if (self != nil) {
 		[self setType:theType];
@@ -38,7 +39,7 @@
 	[super dealloc];
 }
 
-+(FLXPostgresArray* )arrayWithDimensions:(NSUInteger)theDimensions type:(FLXPostgresType)theType {
++(FLXPostgresArray* )arrayWithDimensions:(NSUInteger)theDimensions type:(FLXPostgresOid)theType {
 	return [[[FLXPostgresArray alloc] initWithDimensions:theDimensions type:theType] autorelease];
 }
 
