@@ -1899,6 +1899,7 @@
 				GENERATE_MASTER_OBJECT_FILE = YES;
 				HEADER_SEARCH_PATHS = "${BUILT_PRODUCTS_DIR}/postgresql-current/include";
 				INFOPLIST_FILE = "resources/PostgresClientKit-Info.plist";
+				LD_DYLIB_INSTALL_NAME = "@executable_path/../$(EXECUTABLE_PATH)";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1927,6 +1928,7 @@
 				GENERATE_MASTER_OBJECT_FILE = YES;
 				HEADER_SEARCH_PATHS = "${BUILT_PRODUCTS_DIR}/postgresql-current/include";
 				INFOPLIST_FILE = "resources/PostgresClientKit-Info.plist";
+				LD_DYLIB_INSTALL_NAME = "@executable_path/../$(EXECUTABLE_PATH)";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
